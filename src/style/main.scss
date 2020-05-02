@@ -1,0 +1,13 @@
+@import './mixins';
+@import './fonts';
+
+body {
+  font-family: 'Poppin-regular', sans-serif;
+  background-color: purple;
+
+  h1 {
+    font-family: 'Poppin-semibold', sans-serif;
+    color: yellow;
+  }
+
+}
