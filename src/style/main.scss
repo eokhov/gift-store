@@ -1,13 +1,93 @@
 @import './mixins';
 @import './fonts';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Poppin-regular', sans-serif;
-  background-color: purple;
+}
 
-  h1 {
-    font-family: 'Poppin-semibold', sans-serif;
-    color: yellow;
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+
+.section-inner {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+// ==== header ====
+.section-header-content {
+  display: flex;
+  flex-flow: wrap;
+
+  .section-header-wrapper-text,
+  .section-header-wrapper-foto {
+    flex-basis: 50%;
   }
 
+  .section-header-wrapper-text {
+    padding: 120px;
+    background-color: #f2f2f2;
+
+    &__main-title {
+      h1 {
+        font-family: 'Poppin-semibold', sans-serif;
+        font-size: 56px;
+        margin-bottom: 36px;
+      }
+    }
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 52px;
+    }
+
+    &__subtitle,
+    &__promotext {
+      font-size: 20px;
+    }
+
+    .btn-main {
+      @include start-button;
+
+      background-color: #f7941e;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      @include start-button;
+
+      border: 1px solid #f7941e;
+      color: #f7941e;
+    }
+  }
+
+  .section-header-wrapper-foto {
+    width: 700px;
+
+    img {
+      display: block;
+    }
+  }
 }
+// ==== / header ====
+
+// ==== goods ====
+.section-goods {
+  padding: 120px 0;
+  text-align: center;
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 23px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+  }
+}
+// ==== / goods ====
