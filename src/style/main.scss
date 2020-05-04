@@ -1,5 +1,6 @@
 @import './mixins';
 @import './fonts';
+@import './vars';
 
 * {
   box-sizing: border-box;
@@ -7,6 +8,7 @@
 
 body {
   font-family: 'Poppin-regular', sans-serif;
+  line-height: 1.4;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -14,9 +16,56 @@ h1,h2,h3,h4,h5,h6,p {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .section-inner {
   width: 1440px;
   margin: 0 auto;
+}
+
+.btn-main {
+  @include start-button;
+
+  background-color: #f7941e;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  @include start-button;
+
+  border: 1px solid #f7941e;
+  color: #f7941e;
+}
+
+.btn-black {
+  @include start-button;
+
+  padding: 13px 30px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-light {
+  @include start-button;
+
+  margin-left: 20px;
+  padding: 12px 30px;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.block-description {
+  &__title {
+    font-size: 32px;
+    margin-bottom: 23px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    margin-bottom: 80px;
+  }
 }
 
 // ==== header ====
@@ -50,20 +99,6 @@ h1,h2,h3,h4,h5,h6,p {
     &__promotext {
       font-size: 20px;
     }
-
-    .btn-main {
-      @include start-button;
-
-      background-color: #f7941e;
-      color: #ffffff;
-    }
-
-    .btn-secondary {
-      @include start-button;
-
-      border: 1px solid #f7941e;
-      color: #f7941e;
-    }
   }
 
   .section-header-wrapper-foto {
@@ -81,13 +116,176 @@ h1,h2,h3,h4,h5,h6,p {
   padding: 120px 0;
   text-align: center;
 
-  &__title {
-    font-size: 32px;
-    margin-bottom: 23px;
-  }
+  &__card-block {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
 
-  &__subtitle {
-    font-size: 18px;
+    &-item {
+      transition: .2s;
+
+      img {
+        display: block;
+      }
+
+      &_description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 160px;
+        background-color: #fafafa;
+        padding: 20px;
+
+
+        .description_title {
+          font-size: 20px;
+        }
+
+        .description_button {
+          font-size: 14px;
+          a {
+            color: #000000;
+
+            &:hover {
+              color: $accent-color;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, .25);
+
+        .section-goods__card-block-item_description {
+          background-color: #fff;
+        }
+      }
+    }
   }
 }
 // ==== / goods ====
+
+// ==== promo ====
+.section-promo {
+  padding: 120px 0;
+  background-color: $accent-color;
+
+  .section-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+  }
+
+  &__message {
+    &-title {
+      font-family: 'Poppin-bold', sans-serif;
+      font-size: 32px;
+    }
+    &-subtitle {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+}
+// ==== / promo ====
+
+// ==== blog ====
+.section-blog {
+  padding: 120px 0;
+  text-align: center;
+
+  &__promo {
+    width: 1170px;
+    margin: 0 auto;
+  }
+
+  &__promo-max {
+    display: flex;
+
+    &-description {
+      background-color: #231f20;
+      flex-grow: 1;
+      text-align: left;
+      padding: 60px 80px;
+      color: #ffffff;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .author {
+        font-size: 14px;
+        margin-bottom: 27px;
+      }
+
+      .title {
+        font-size: 48px;
+      }
+
+      a {
+        margin-top: auto;
+        color: #ffffff;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+
+  &__promo-min {
+    margin-top: 40px;
+    display: flex;
+
+    &-post {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-basis: 570px;
+      padding: 48px;
+      text-align: left;
+      transition: .2s;
+
+      &_title {
+        font-family: 'Poppin-bold', sans-serif;
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      &_text {
+        font-size: 18px;
+        margin-bottom: 36px;
+      }
+
+      &_link {
+        color: #000000;
+        font-size: 14px;
+        transition: .2s;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+
+      & + & {
+        margin-left: 30px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, .05);
+      }
+      
+    }
+
+  }
+}
+// ==== / blog ====
+
+// ==== footer ====
+// ==== / footer ====
