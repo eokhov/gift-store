@@ -37,6 +37,11 @@ a {
 
   border: 1px solid #f7941e;
   color: #f7941e;
+  transition: .2s;
+
+  &:hover {
+    background-color: #ffffff;
+  }
 }
 
 .btn-black {
@@ -45,6 +50,11 @@ a {
   padding: 13px 30px;
   background-color: #000000;
   color: #ffffff;
+  transition: .2s;
+
+  &:hover {
+    color: $accent-color;
+  }
 }
 
 .btn-light {
@@ -54,6 +64,12 @@ a {
   padding: 12px 30px;
   border: 1px solid #000000;
   color: #000000;
+  transition: .2s;
+
+  &:hover {
+    border-color: #ffffff;
+    background-color: #fff;
+  }
 }
 
 .block-description {
@@ -175,7 +191,8 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 55%;
+    width: 1170px;
+    margin: 0 auto;
   }
 
   &__message {
@@ -230,6 +247,7 @@ a {
       a {
         margin-top: auto;
         color: #ffffff;
+        transition: .2s;
 
         &:hover {
           color: $accent-color;
