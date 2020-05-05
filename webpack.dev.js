@@ -14,8 +14,9 @@ module.exports = merge(common, {
 
   devServer: {
     overlay: true,
-    port: 9000
-  },
+    port: 9000,
+    host: '0.0.0.0'
+    },
 
   plugins: [
     new CleanWebpackPlugin(),
