@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "serv": "webpack-dev-server --config webpack.dev.js --open",
+    "serv": "webpack-dev-server --config webpack.dev.js",
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },

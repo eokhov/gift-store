@@ -2,6 +2,20 @@
 @import './fonts';
 @import './vars';
 
+// ==== local vars ====
+
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$screen-xs-max: 575px;
+$screen-sm-max: 767px;
+$screen-md-max: 991px;
+$screen-lg-max: 1199px;
+
+// ==== / local vars ====
+
 * {
   box-sizing: border-box;
 }
@@ -18,6 +32,11 @@ h1,h2,h3,h4,h5,h6,p {
 
 a {
   text-decoration: none;
+}
+
+.section-outer {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .section-inner {
@@ -111,6 +130,7 @@ a {
   &-logo {
     color: $accent-color;
     font-family: 'Poppin-semibold', sans-serif;
+    white-space: nowrap;
   }
   &-menu {
     margin: 0;
@@ -135,10 +155,21 @@ a {
     }
     
   }
+
+  @media (max-width: $screen-sm-max) {
+    flex-flow: column;
+
+    &-logo {
+      margin-bottom: 20px;
+    }
+
+    &-menu {
+      display: none;
+    }
+  }
 }
 .section-header-content {
   display: flex;
-  flex-flow: wrap;
 
   .section-header-wrapper-text,
   .section-header-wrapper-foto {
@@ -146,7 +177,6 @@ a {
   }
 
   .section-header-wrapper-text {
-    padding: 120px;
     background-color: #f2f2f2;
 
     &__main-title {
@@ -174,37 +204,104 @@ a {
   .section-header-wrapper-foto {
     .foto-top {
       width: 100%;
-      height: 706px;
       background-image: url('../assets/img/Background.jpg');
       background-repeat: no-repeat;
-      background-size: cover;
+      background-position: center;
     }
 
     .foto-bottom {
       width: 100%;
-      height: 706px;
       background-image: url('../assets/img/Media.jpg');
       background-repeat: no-repeat;
-      background-size: cover;
+      background-position: center;
     }
   }
 
+  @media (max-width: $screen-xs-max){
+    flex-direction: column;
+
+    .foto-top {
+      background-size: contain;
+      height: 521px;
+    }
+
+    .foto-bottom {
+      background-size: contain;
+      height: 445px;
+    }
+
+    .foto-order{
+      order: 1;
+    }
+
+    .section-header-wrapper-text {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: $screen-md-max) {
+    flex-direction: column;
+
+    .foto-top {
+      background-size: cover;
+      height: 521px;
+    }
+
+    .foto-bottom {
+      background-size: cover;
+      height: 445px;
+    }
+
+    .foto-order{
+      order: 1;
+    }
+  }
+
+  @media (max-width: $screen-lg-max) {
+    flex-flow: column nowrap;
+
+    .section-header-wrapper-text {
+      padding: 30px;
+    }
+  }
+
+  @media (min-width: $screen-xl) {
+    flex-flow: row wrap;
+    
+    .foto-top {
+      background-size: cover;
+      height: 706px;
+    }
+
+    .foto-bottom {
+      background-size: cover;
+      height: 706px;
+    }
+
+    .section-header-wrapper-text {
+      padding: 120px;
+    }
+  }
 }
 // ==== / header ====
 
 // ==== goods ====
 .section-goods {
-  padding: 120px 0;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
   text-align: center;
 
   &__card-block {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     text-align: left;
 
     &-item {
+      margin-top: 15px;
       transition: .2s;
-
+      
       img {
         display: block;
       }
@@ -242,6 +339,13 @@ a {
           background-color: #fff;
         }
       }
+
+      @media (min-width: $screen-sm) {
+        & {
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+      }
     }
   }
 }
@@ -249,14 +353,16 @@ a {
 
 // ==== promo ====
 .section-promo {
-  padding: 120px 0;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
   background-color: $accent-color;
 
   .section-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1170px;
+    max-width: 1170px;
     margin: 0 auto;
   }
 
@@ -273,16 +379,28 @@ a {
   &__buttons {
     display: flex;
   }
+
+  @media (max-width: $screen-md-max) {
+    .section-inner {
+      flex-direction: column;
+    }
+
+    &__message {
+      margin-bottom: 30px;
+    }
+  }
 }
 // ==== / promo ====
 
 // ==== blog ====
 .section-blog {
-  padding: 120px 0;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
   text-align: center;
 
   &__promo {
-    width: 1170px;
+    max-width: 1170px;
     margin: 0 auto;
   }
 
@@ -291,11 +409,11 @@ a {
 
     &-description {
       background-color: #231f20;
-      flex-grow: 1;
       text-align: left;
-      padding: 60px 80px;
+      flex-grow: 1;
+      padding-top: 60px;
+      padding-bottom: 60px;
       color: #ffffff;
-
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -319,6 +437,34 @@ a {
         }
       }
     }
+
+    @media (max-width: $screen-xs-max) {
+      img {
+        display: none;
+      }
+
+      &-description {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+
+    @media (max-width: $screen-md-max) {
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #231f20;
+
+      &-description {
+        align-self: normal;
+      }
+    }
+
+    @media (min-width: $screen-sm) {
+      &-description {
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+    }
   }
 
   &__promo-min {
@@ -329,7 +475,6 @@ a {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      flex-basis: 570px;
       padding: 48px;
       text-align: left;
       transition: .2s;
@@ -355,10 +500,6 @@ a {
         }
       }
 
-      & + & {
-        margin-left: 30px;
-      }
-
       &:hover {
         cursor: pointer;
         box-shadow: 10px 10px 15px rgba(0, 0, 0, .05);
@@ -366,13 +507,32 @@ a {
       
     }
 
+    @media (max-width: $screen-sm-max) {
+      flex-direction: column;
+
+      &-post {
+        & + & {
+          margin-top: 30px;
+        }
+      }
+    }
+
+    @media (min-width: $screen-md) {
+      &-post {
+        & + & {
+          margin-left: 30px;
+        }
+      }
+    }
   }
 }
 // ==== / blog ====
 
 // ==== footer ====
 .section-footer {
-  padding: 120px 0;
+  padding-top: 120px;
+  padding-bottom: 120px;
+
   background-color: #fafafa;
 
   &__nav {
@@ -387,10 +547,7 @@ a {
     margin-bottom: 53px;
 
     .link {
-      & + .link {
-        margin-left: 76px;
-      }
-
+     
       a {
         color: #000000;
         transition: .2s;
@@ -405,6 +562,19 @@ a {
       color: $accent-color;
       margin: 0 140px;
       font-size: 20px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: $screen-sm-max) {
+      flex-direction: column;
+    }
+
+    @media (min-width: $screen-md) {
+      .link {
+        & + .link {
+          margin-left: 76px;
+        }
+      }
     }
   }
 
@@ -413,7 +583,7 @@ a {
     height: 1px;
     border: none;
     margin: 0 auto;
-    width: 1000px;
+    max-width: 1000px;
   }
 
   &__social {
